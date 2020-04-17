@@ -19,7 +19,8 @@ var newHeight = parseInt(newWidth.replace('px', '')) * 0.5625 + 'px';
 var marginTop = '80px';
 var marginLeft = '10px';
 
-var base_url = "https://jtorresdev.github.io/demo-video-vast/endgame"
+var base_url = "https://jtorresdev.github.io/demo-video-vast/endgame";
+var imgurl = "https://github.com/SarAbigail/video/blob/master";
 //var base_url = "./"
 
 var hidePlayerButtons = function () {
@@ -170,7 +171,7 @@ var options = {
 				var dotsRendimiento = document.createElement('div');
 				background.id = 'bg-samsung';
 				background.style = "background-image:url('https://github.com/SarAbigail/video/blob/ghpages/assets/background.png?raw=true');width:" + width + ';height:' + height + ';background-repeat: no-repeat;';
-				switchs.style = 'position:absolute;top:0;height:50px;width:326px;margin:10px; border:1px solid #ffffff; border-radius:10px;';
+				switchs.style = 'position:absolute;top:0;height:50px;width:326px;margin:10px; border:2px solid #ffffff; border-radius:10px;';
 				switchs.id = 'wrapper-switch';
 				countdown.id = "countdown"
 				function n(n) {
@@ -202,10 +203,10 @@ var options = {
 
 				switchs.innerHTML = `
 				<form style="display:flex;">	
-				<label id="sw-s20" style="height:50px;width:163px;background-color:white;border-radius:9px;"><img src="assets/swi-1.png" style="height:40px;width:32px;background-size:unset;position:relative;top:5px;left:4px;"/> <span id="sw-text-s20" style="color:#000000;position:relative;bottom:12px;">Galaxy S20 | S20+</span>
+				<label id="sw-s20" style="height:50px;width:163px;background-color:white;border-radius:7px;"><img src="assets/swi-1.png" style="height:40px;width:32px;background-size:unset;position:relative;top:5px;left:4px;"/> <span id="sw-text-s20" style="color:#000000;position:relative;bottom:12px;">Galaxy S20 | S20+</span>
 				<input type="radio" id="s20" name="modelo" style="display:none;" checked>
 				</label>		
-				<label id="sw-s20-ultra" style="height:50px;width:163px;background-color:#000000;border-radius:9px;"><img src="assets/swi-2.png" style="height:40px;width:35px;background-size:unset;position:relative;top:5px;left:4px;"/> <span id="sw-text-s20-ultra" style="color:#ffffff;position:relative;bottom:12px;">Galaxy S20 Ultra</span>
+				<label id="sw-s20-ultra" style="height:49px;width:162px;background-color:#000000;border-radius:9px;"><img src="assets/swi-2.png" style="height:40px;width:35px;background-size:unset;position:relative;top:5px;left:4px;"/> <span id="sw-text-s20-ultra" style="color:#ffffff;position:relative;bottom:12px;">Galaxy S20 Ultra</span>
   				<input type="radio" id="sultra" name="modelo" style="display:none;">
 				</form>
 				</label>`;
@@ -314,7 +315,7 @@ var options = {
 					document.getElementById('video-id_fluid_controls_container').style.display = 'none';
 					document.getElementById('video-id_fluid_initial_play').style = 'cursor:none;display:none';
 					video.pause();
-				});				
+				});
 			}
 
 			// agregamos el listener para cuando termine de achicarse
@@ -404,35 +405,38 @@ for (let elem of videoThumbs) {
 	});
 }
 
+function HideDots() {
+	var dots = document.getElementsByClassName('dots');
+	if (dots.length > 0) {
+		for (i = 0; i < dots.length; i++) {
+			dots[i].style.display = 'none';
+		}
+	}
+}
+function DeleteActiveClass() {
+	//Se quita las clases no active
+	if (document.getElementsByClassName('active').length > 0) {
+		document.getElementsByClassName('active')[0].classList.remove('active');
+	}
+	if (document.getElementsByClassName('active-w').length > 0) {
+		document.getElementsByClassName('active-w')[0].classList.remove('active-w');
+	}
+}
+function ChangeMenuColor(color){
+	var menu = document.querySelectorAll('a');
+	menu.forEach(opcion => {
+		opcion.style.color = color;
+	});
+}
+function ChangeColorSwitch(){
+	document.getElementById('wrapper-switch').style.border = '2px solid #000000';
+	document.getElementById('sw-s20').style.backgroundColor = "#000000";
+	document.getElementById('sw-text-s20').style.color = "#ffffff";
+	document.getElementById('sw-s20-ultra').style.backgroundColor = "#ffffff";
+	document.getElementById('sw-text-s20-ultra').style.color = "#000000";
+	document.getElementById('s20').checked = true;
+}
 document.getElementById('sw-s20').addEventListener('click', () => {
-	// document.getElementById('fluid_video_wrapper_video-id').style.display = 'block';
-	// document.getElementById('sw-text-s20').style.color = "#000000";
-	// document.getElementById('sw-s20').style.backgroundColor = "#ffffff";
-	// document.getElementById('sw-text-s20-ultra').style.color = "#ffffff";
-	// document.getElementById('wrapper-switch').style.border = '1px solid #ffffff';
-	// document.getElementById('sw-s20-ultra').style.backgroundColor = "#000000";
-	// document.getElementById('img-home').setAttribute('src', "/assets/home-white.png");
-	// document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background.png')";
-	// document.getElementById('closeButton').setAttribute('src', "/assets/close.png");
-
-	// var menu = document.querySelectorAll('a');
-	// var dots = document.getElementsByClassName('dots');
-	// if (dots.length > 0) {
-	// 	for (i = 0; i < dots.length; i++) {
-	// 		dots[i].style.display = 'none';
-	// 	}
-	// }
-	// menu.forEach(opcion => {
-	// 	opcion.style.color = "#ffffff";
-	// });
-	// //Se quita las clases no active
-	// if (document.getElementsByClassName('active').length > 0) {
-	// 	document.getElementsByClassName('active')[0].classList.remove('active');
-	// }
-	// if (document.getElementsByClassName('active-w').length > 0) {
-	// 	document.getElementsByClassName('active-w')[0].classList.remove('active-w');
-	// }
-	// document.getElementById('homeItem').classList.add('active');
 	document.getElementById('homeItem').click();
 });
 
@@ -441,27 +445,14 @@ document.getElementById('sw-s20-ultra').addEventListener('click', () => {
 });
 
 document.getElementById('homeItem').addEventListener('click', () => {
-	document.getElementById('bg-samsung').style.backgroundImage = "url('https://github.com/SarAbigail/video/blob/ghpages/assets/background.png?raw=true')";
+	document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background.png?raw=true')";
 	document.getElementById('fluid_video_wrapper_video-id').style.display = 'block';
-	document.getElementById('img-home').setAttribute('src', "https://github.com/SarAbigail/video/blob/ghpages/assets/home-white.png?raw=true");
-	document.getElementById('closeButton').setAttribute('src', "/assets/close.png");
-	//Se ocultan los demas dots
-	var dots = document.getElementsByClassName('dots');
-	if (dots.length > 0) {
-		for (i = 0; i < dots.length; i++) {
-			dots[i].style.display = 'none';
-		}
-	}
-	var menu = document.querySelectorAll('a');
-	menu.forEach(opcion => {
-		opcion.style.color = "#ffffff";
-	});
-	if (document.getElementsByClassName('active').length > 0) {
-		document.getElementsByClassName('active')[0].classList.remove('active');
-	}
-	if (document.getElementsByClassName('active-w').length > 0) {
-		document.getElementsByClassName('active-w')[0].classList.remove('active-w');
-	}
+	document.getElementById('img-home').setAttribute('src', imgurl + "/assets/home-white.png?raw=true");
+	document.getElementById('closeButton').setAttribute('src', "/assets/close.png?raw=true");
+	HideDots();
+	ChangeMenuColor("#ffffff");
+	//Se quita las clases no active
+	DeleteActiveClass();
 	document.getElementById('homeItem').classList.add('active');
 	document.getElementById('sw-s20').addEventListener('click', () => {
 		document.getElementById('sw-text-s20').style.color = "#000000";
@@ -472,7 +463,7 @@ document.getElementById('homeItem').addEventListener('click', () => {
 	document.getElementById('sw-s20-ultra').addEventListener('click', () => {
 		document.getElementById('destacadosItem').click();
 	});
-	document.getElementById('wrapper-switch').style.border = '1px solid #ffffff';
+	document.getElementById('wrapper-switch').style.border = '2px solid #ffffff';
 	document.getElementById('sw-s20').style.backgroundColor = "#ffffff";
 	document.getElementById('sw-text-s20').style.color = "#000000";
 	document.getElementById('sw-s20-ultra').style.backgroundColor = "#000000";
@@ -480,22 +471,13 @@ document.getElementById('homeItem').addEventListener('click', () => {
 });
 
 document.getElementById('destacadosItem').addEventListener('click', () => {
-	document.getElementById('bg-samsung').style.backgroundImage = "url('https://github.com/SarAbigail/video/blob/ghpages/assets/background-destacados-s20-2-s20+.png?raw=true')";
+	document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-2-s20+.png?raw=true')";
 	document.getElementById('video-id').pause();
 	document.getElementById('fluid_video_wrapper_video-id').style.display = 'none';
-	document.getElementById('wrapper-switch').style.border = '1px solid #000000';
-	document.getElementById('sw-s20').style.backgroundColor = '#000000';
-	document.getElementById('sw-text-s20').style.color = '#ffffff';
-	document.getElementById('sw-s20-ultra').style.backgroundColor = '#ffffff';
-	document.getElementById('sw-text-s20-ultra').style.color = '#000000';
-	document.getElementById('s20').checked = true;
+
+	ChangeColorSwitch();
 	//Se ocultan los demas dots
-	var dots = document.getElementsByClassName('dots');
-	if (dots.length > 0) {
-		for (i = 0; i < dots.length; i++) {
-			dots[i].style.display = 'none';
-		}
-	}
+	HideDots();
 	//Se muestran los dots
 	document.getElementById('dotsDestacados').style.display = "flex";
 	//Se muestran los botones de la primera imagen
@@ -503,203 +485,139 @@ document.getElementById('destacadosItem').addEventListener('click', () => {
 	document.getElementById('btn-destacado-s20+').style.display = 'block';
 	//Se escuchan las imagenes
 	document.getElementById('btn-destacado-s20').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('https://github.com/SarAbigail/video/blob/ghpages/assets/background-destacados-s20-2-s20+.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-2-s20+.png?raw=true')";
 	});
 	document.getElementById('btn-destacado-s20+').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-destacados-s20-1-s20+.png')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-1-s20+.png?raw=true')";
 	});
 	//Se hace click en los dots
 	document.getElementById('first-destacados').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('https://github.com/SarAbigail/video/blob/ghpages/assets/background-destacados-s20-2-s20+.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-2-s20+.png?raw=true')";
 		document.getElementById('first-destacados').style.backgroundColor = "grey";
 		document.getElementById('second-destacados').style.backgroundColor = "#ced2d8";
 		document.getElementById('third-destacados').style.backgroundColor = "#ced2d8";
 	});
 	document.getElementById('second-destacados').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-destacados-s20-2.png')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-2.png?raw=true')";
 		document.getElementById('first-destacados').style.backgroundColor = "#ced2d8";
 		document.getElementById('second-destacados').style.backgroundColor = "grey";
 		document.getElementById('third-destacados').style.backgroundColor = "#ced2d8";
 	});
 	document.getElementById('third-destacados').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-destacados-s20-3.png')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-3.png?raw=true')";
 		document.getElementById('first-destacados').style.backgroundColor = "#ced2d8";
 		document.getElementById('second-destacados').style.backgroundColor = "#ced2d8";
 		document.getElementById('third-destacados').style.backgroundColor = "grey";
 	});
 	//Se quita las clases no active
-	if (document.getElementsByClassName('active').length > 0) {
-		document.getElementsByClassName('active')[0].classList.remove('active');
-	}
-	if (document.getElementsByClassName('active-w').length > 0) {
-		document.getElementsByClassName('active-w')[0].classList.remove('active-w');
-	}
+	DeleteActiveClass();
 	//Se le coloca clase active
 	document.getElementById('destacadosItem').setAttribute('class', 'active-w');
-	//Se cambia el color
-	var menu = document.querySelectorAll('a');
-	menu.forEach(opcion => {
-		opcion.style.color = "#000000";
-	});
-	document.getElementById('img-home').setAttribute('src', "https://github.com/SarAbigail/video/blob/ghpages/assets/home-black.png?raw=true");
-	document.getElementById('closeButton').setAttribute('src', "/assets/close-w.png");
+	ChangeMenuColor('#000000');
+	document.getElementById('img-home').setAttribute('src', imgurl + "/assets/home-black.png?raw=true");
+	document.getElementById('closeButton').setAttribute('src', "/assets/close-w.png?raw=true");
 });
 
 document.getElementById('diseñoItem').addEventListener('click', () => {
 	//Se ocultan los demas dots
-	var dots = document.getElementsByClassName('dots');
-	if (dots.length > 0) {
-		for (i = 0; i < dots.length; i++) {
-			dots[i].style.display = 'none';
-		}
-	}
+	HideDots();
 	document.getElementById('dotsDiseño').style.display = 'flex';
 	//Se quita las clases no active
-	if (document.getElementsByClassName('active').length > 0) {
-		document.getElementsByClassName('active')[0].classList.remove('active');
-	}
-	if (document.getElementsByClassName('active-w').length > 0) {
-		document.getElementsByClassName('active-w')[0].classList.remove('active-w');
-	}
+	DeleteActiveClass();
 	//Se le coloca clase active
 	document.getElementById('diseñoItem').setAttribute('class', 'active-w');
 	//la imagen de fondo es diferente
-	document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-diseño-1.png')";
+	document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-diseño-1.png?raw=true')";
 	//pausa el video
 	document.getElementById('video-id').pause();
 	//oculta el reproductor del video
 	document.getElementById('fluid_video_wrapper_video-id').style.display = 'none';
 	//el home icon se vuelve negro
-	document.getElementById('img-home').setAttribute('src', "https://github.com/SarAbigail/video/blob/ghpages/assets/home-black.png?raw=true");
-	document.getElementById('closeButton').setAttribute('src', "/assets/close-w.png");
-
-	//se cambia de color a las a
-	var menu = document.querySelectorAll('a');
-	menu.forEach(opcion => {
-		opcion.style.color = "#000000";
-	});
+	document.getElementById('img-home').setAttribute('src', imgurl + "/assets/home-black.png?raw=true");
+	document.getElementById('closeButton').setAttribute('src', imgurl + "/assets/close-w.png?raw=true");
+	ChangeMenuColor('#000000');
 	//se pone una escucha en los dots
 	document.getElementById('first-diseño').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-diseño-1.png')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-diseño-1.png?raw=true')";
 		document.getElementById('first-diseño').style.backgroundColor = 'grey';
 		document.getElementById('second-diseño').style.backgroundColor = '#ced2d8';
 		document.getElementById('third-diseño').style.backgroundColor = '#ced2d8';
 	});
 	document.getElementById('second-diseño').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-diseño-2.png')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-diseño-2.png?raw=true')";
 		document.getElementById('first-diseño').style.backgroundColor = '#ced2d8';
 		document.getElementById('second-diseño').style.backgroundColor = 'grey';
 		document.getElementById('third-diseño').style.backgroundColor = '#ced2d8';
 	});
 	document.getElementById('third-diseño').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('https://github.com/SarAbigail/video/blob/ghpages/assets/background-dise%C3%B1o-3.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-dise%C3%B1o-3.png?raw=true')";
 		document.getElementById('first-diseño').style.backgroundColor = '#ced2d8';
 		document.getElementById('second-diseño').style.backgroundColor = '#ced2d8';
 		document.getElementById('third-diseño').style.backgroundColor = 'grey';
 	});
-	document.getElementById('wrapper-switch').style.border = '1px solid #000000';
-	document.getElementById('sw-s20').style.backgroundColor = "#000000";
-	document.getElementById('sw-text-s20').style.color = "#ffffff";
-
-	document.getElementById('sw-s20-ultra').style.backgroundColor = "#ffffff";
-	document.getElementById('sw-text-s20-ultra').style.color = "#000000";
+	ChangeColorSwitch();
 });
 
 document.getElementById('camaraItem').addEventListener('click', () => {
 	//Se ocultan los demas dots
-	var dots = document.getElementsByClassName('dots');
-	if (dots.length > 0) {
-		for (i = 0; i < dots.length; i++) {
-			dots[i].style.display = 'none';
-		}
-	}
+	HideDots();
 	document.getElementById('dotsCamara').style.display = 'flex';
 	//Se quita las clases no active
-	if (document.getElementsByClassName('active').length > 0) {
-		document.getElementsByClassName('active')[0].classList.remove('active');
-	}
-	if (document.getElementsByClassName('active-w').length > 0) {
-		document.getElementsByClassName('active-w')[0].classList.remove('active-w');
-	}
+	DeleteActiveClass();
 	//Se le coloca clase active
 	document.getElementById('camaraItem').setAttribute('class', 'active-w');
-	document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-camara-1.png')";
+	document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-camara-1.png?raw=true')";
 	document.getElementById('video-id').pause();
 	document.getElementById('fluid_video_wrapper_video-id').style.display = 'none';
-	document.getElementById('img-home').setAttribute('src', "https://github.com/SarAbigail/video/blob/ghpages/assets/home-black.png?raw=true");
-	document.getElementById('closeButton').setAttribute('src', "/assets/close-w.png");
-	var menu = document.querySelectorAll('a');
-	menu.forEach(opcion => {
-		opcion.style.color = "#000000";
-	});
+	document.getElementById('img-home').setAttribute('src', imgurl + "/assets/home-black.png?raw=true");
+	document.getElementById('closeButton').setAttribute('src', imgurl + "/assets/close-w.png?raw=true");
+	ChangeMenuColor('#000000');
 	//Se escucha los dots
 	document.getElementById('first-camara').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-camara-1.png')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-camara-1.png?raw=true')";
 		document.getElementById('first-camara').style.backgroundColor = 'grey';
 		document.getElementById('second-camara').style.backgroundColor = '#ced2d8';
 		document.getElementById('third-camara').style.backgroundColor = '#ced2d8';
 	});
 	document.getElementById('second-camara').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-camara-2.png')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-camara-2.png?raw=true')";
 		document.getElementById('first-camara').style.backgroundColor = '#ced2d8';
 		document.getElementById('second-camara').style.backgroundColor = 'grey';
 		document.getElementById('third-camara').style.backgroundColor = '#ced2d8';
 	});
 	document.getElementById('third-camara').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-camara-3.png')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-camara-3.png?raw=true')";
 		document.getElementById('first-camara').style.backgroundColor = '#ced2d8';
 		document.getElementById('second-camara').style.backgroundColor = '#ced2d8';
 		document.getElementById('third-camara').style.backgroundColor = 'grey';
 	});
-	document.getElementById('wrapper-switch').style.border = '1px solid #000000';
-	document.getElementById('sw-s20').style.backgroundColor = "#000000";
-	document.getElementById('sw-text-s20').style.color = "#ffffff";
-
-	document.getElementById('sw-s20-ultra').style.backgroundColor = "#ffffff";
-	document.getElementById('sw-text-s20-ultra').style.color = "#000000";
+	ChangeColorSwitch();
 });
 
 document.getElementById('rendimiento').addEventListener('click', () => {
 	//Se ocultan los demas dots
-	var dots = document.getElementsByClassName('dots');
-	if (dots.length > 0) {
-		for (i = 0; i < dots.length; i++) {
-			dots[i].style.display = 'none';
-		}
-	}
+	HideDots();
 	document.getElementById('dotsRendimiento').style.display = "flex";
 	//Se quita las clases no active
-	if (document.getElementsByClassName('active').length > 0) {
-		document.getElementsByClassName('active')[0].classList.remove('active');
-	}
-	if (document.getElementsByClassName('active-w').length > 0) {
-		document.getElementsByClassName('active-w')[0].classList.remove('active-w');
-	}
+	DeleteActiveClass();
 	//Se le coloca clase active
 	document.getElementById('rendimiento').setAttribute('class', 'active-w');
 	//Se escucha los dots
 	document.getElementById('first-r').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-rendimiento-bateria.png')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-rendimiento-bateria.png?raw=true')";
 		document.getElementById('first-r').style.backgroundColor = 'grey';
 		document.getElementById('second-r').style.backgroundColor = '#ced2d8';
 	});
 	document.getElementById('second-r').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-rendimiento-memoria.png')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-rendimiento-memoria.png?raw=true')";
 		document.getElementById('first-r').style.backgroundColor = '#ced2d8';
 		document.getElementById('second-r').style.backgroundColor = 'grey';
 	});
-	document.getElementById('bg-samsung').style.backgroundImage = "url('/assets/background-rendimiento-bateria.png')";
+	document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-rendimiento-bateria.png?raw=true')";
 	document.getElementById('video-id').pause();
 	document.getElementById('fluid_video_wrapper_video-id').style.display = 'none';
-	document.getElementById('img-home').setAttribute('src', "https://github.com/SarAbigail/video/blob/ghpages/assets/home-black.png?raw=true");
-	document.getElementById('closeButton').setAttribute('src', "/assets/close-w.png");
-	var menu = document.querySelectorAll('a');
-	menu.forEach(opcion => {
-		opcion.style.color = "#000000";
-	});
-	document.getElementById('wrapper-switch').style.border = '1px solid #000000';
-	document.getElementById('sw-s20').style.backgroundColor = "#000000";
-	document.getElementById('sw-text-s20').style.color = "#ffffff";
-	document.getElementById('sw-s20-ultra').style.backgroundColor = "#ffffff";
-	document.getElementById('sw-text-s20-ultra').style.color = "#000000";
+	document.getElementById('img-home').setAttribute('src', imgurl + "/assets/home-black.png?raw=true");
+	document.getElementById('closeButton').setAttribute('src', imgurl + "/assets/close-w.png?raw=true");
+	ChangeMenuColor('#000000');
+	ChangeColorSwitch();
 });
